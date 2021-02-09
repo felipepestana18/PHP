@@ -1,12 +1,7 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['logado']) || $_SESSION['logado'] != 'SIM') {
-  header('Location: index.php?login=erro1');
-}
+require_once('validar_acesso.php');
 ?>
 <html>
-
 <head>
   <meta charset="utf-8" />
   <title>App Help Desk</title>
