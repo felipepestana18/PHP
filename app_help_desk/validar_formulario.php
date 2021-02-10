@@ -2,9 +2,8 @@
 
 session_start();
 
-$_SESSION['x'] = 'TESTE';
-// para recuperar a requisção feita pela a URL.
-/*
+/*ão feita pela a URL.
+
     print_r($_GET);
     echo '<hr>';
     echo $_GET['email'];
@@ -27,17 +26,13 @@ $usuarios_app = [
 foreach ($usuarios_app as $usuario) {
 
     if ($usuario['email'] == $_POST['email'] && $usuario['senha'] == $_POST['senha']) {
-        echo 'Usuário Autenticado';
-        $existe = true;
+        $_SESSION['logado'] = 'SIM';
+        header('Location: home.php');
         break;
     } else {
+        $_SESSION['logado'] = 'NAO';
         header('Location: index.php?login=erro');
-        $existe = false;
     }
 }
 
-if ($existe == true) {
-    $_SESSION['logado'] = 'SIM';
-} else {
-    $_SESSION['logado'] = 'NAO';
-}
+

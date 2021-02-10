@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once("validar_acesso.php");
 ?>
 <html>
@@ -25,6 +25,11 @@ require_once("validar_acesso.php");
       <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
       App Help Desk
     </a>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href='logoff.php'> SAIR</a>
+      </li>
+    </ul>
   </nav>
 
   <div class="container">
@@ -58,7 +63,9 @@ require_once("validar_acesso.php");
 
             <div class="row mt-5">
               <div class="col-6">
-                <button class="btn btn-lg btn-warning btn-block" type="submit">Voltar</button>
+                <a href="home.php">
+                  <button class="btn btn-lg btn-warning btn-block" type="submit">Voltar</button>
+                </a>
               </div>
             </div>
           </div>
