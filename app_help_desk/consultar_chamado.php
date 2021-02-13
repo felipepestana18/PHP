@@ -1,5 +1,18 @@
 <?php
 require_once("validar_acesso.php");
+
+$registros = [];
+$arquivos = fopen('arquivo.hd', 'r');
+while (!feof($arquivos)) {
+  $registros[] = fgets($arquivos);
+}
+
+for ($i = 0; $i < count($registros); $i++) {
+  if (!$registros[$i]) {
+    array_pop($registros);
+  }
+}
+
 ?>
 <html>
 
@@ -42,25 +55,20 @@ require_once("validar_acesso.php");
           </div>
 
           <div class="card-body">
+            <?php foreach ($registros as $registro) { ?>
+              <?php 
+                 $dados = explode('#', $registro);
+                 
+                ?>
+              <div class="card mb-3 bg-light">
+                <div class="card-body">
+                  <h5 class="card-title"><?= $dados[0] ?></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><?= $dados[1] ?></h6>
+                  <p class="card-text"><?= $dados[2] ?></p>
 
-            <div class="card mb-3 bg-light">
-              <div class="card-body">
-                <h5 class="card-title">Título do chamado...</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                <p class="card-text">Descrição do chamado...</p>
-
+                </div>
               </div>
-            </div>
-
-            <div class="card mb-3 bg-light">
-              <div class="card-body">
-                <h5 class="card-title">Título do chamado...</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Categoria</h6>
-                <p class="card-text">Descrição do chamado...</p>
-
-              </div>
-            </div>
-
+            <?php } ?>
             <div class="row mt-5">
               <div class="col-6">
                 <a href="home.php">
