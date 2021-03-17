@@ -17,16 +17,23 @@ print($_POST['email']);
 print($_POST['senha']);
 echo '<hr>';
 $existe = false;
+$perfil_usuario = ['ADMIN' => 1, 'LEITOR' => 2];
 
 $usuarios_app = [
-    ['email' => 'felipe-pe27@hotmail.com', 'senha' => '123456'],
-    ['email' => 'felipe@hotmail.com', 'senha' => '123456'],
+    ['id' => 1, 'email' => 'maria@hotmail.com', 'senha' => '123456', 'perfil_usuario' => $perfil_usuario['ADMIN']],
+    ['id' => 2, 'email' => 'jose@hotmail.com', 'senha' => '123456', 'perfil_usuario' =>  $perfil_usuario['ADMIN']],
+    ['id' => 3, 'email' => 'felipe-pe27@hotmail.com', 'senha' => '123456', 'perfil_usuario' =>  $perfil_usuario['LEITOR']],
+    ['id' => 4, 'email' => 'felipe@hotmail.com', 'senha' => '123456', 'perfil_usuario' => $perfil_usuario['LEITOR']],
+
 ];
 
 foreach ($usuarios_app as $usuario) {
 
+    print_r($usuario);
     if ($usuario['email'] == $_POST['email'] && $usuario['senha'] == $_POST['senha']) {
         $_SESSION['logado'] = 'SIM';
+        $_SESSION['id'] = $usuario['id'];
+        $_SESSION['perfil_usuario'] = $usuario['perfil_usuario'];
         header('Location: home.php');
         break;
     } else {
@@ -34,5 +41,3 @@ foreach ($usuarios_app as $usuario) {
         header('Location: index.php?login=erro');
     }
 }
-
-

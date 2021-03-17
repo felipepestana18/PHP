@@ -1,13 +1,13 @@
 <?php 
 
-    print_r($_POST);
+    session_start();
 
 
     $titulo = str_replace('#', '-', $_POST['titulo']);
     $tipo = str_replace('#', '-', $_POST['tipo']);
     $descricao = str_replace('#', '-', $_POST['descricao']);
 
-    $texto =  $titulo . '#' . $tipo . '#' .  $descricao . PHP_EOL;
+    $texto =  $_SESSION['id'] . '#' . $titulo . '#' . $tipo . '#' .  $descricao . PHP_EOL;
 
      $arquivo = fopen('arquivo.hd', 'a');
 
@@ -16,5 +16,3 @@
      fclose($arquivo);
 
      header('Location: abrir_chamado.php');
-
-?>

@@ -56,15 +56,17 @@ for ($i = 0; $i < count($registros); $i++) {
 
           <div class="card-body">
             <?php foreach ($registros as $registro) { ?>
-              <?php 
-                 $dados = explode('#', $registro);
-                 
-                ?>
+              <?php
+              $dados = explode('#', $registro);
+              if ($dados[0] != $_SESSION['id']) {
+                continue;
+              }
+              ?>
               <div class="card mb-3 bg-light">
                 <div class="card-body">
-                  <h5 class="card-title"><?= $dados[0] ?></h5>
-                  <h6 class="card-subtitle mb-2 text-muted"><?= $dados[1] ?></h6>
-                  <p class="card-text"><?= $dados[2] ?></p>
+                  <h5 class="card-title"><?= $dados[1] ?></h5>
+                  <h6 class="card-subtitle mb-2 text-muted"><?= $dados[2] ?></h6>
+                  <p class="card-text"><?= $dados[3] ?></p>
 
                 </div>
               </div>
