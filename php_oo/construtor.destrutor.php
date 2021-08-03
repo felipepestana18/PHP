@@ -2,6 +2,7 @@
 
     class Pessoa {
         public $nome = null;
+        public $sobreNome;
 
         function __construct($atributo){
             $this->nome = $atributo;
